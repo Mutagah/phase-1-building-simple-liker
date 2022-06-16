@@ -3,6 +3,7 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+
 const likeHeart = document.querySelectorAll(".like-glyph")
 console.log(likeHeart)
 likeHeart.forEach( (elementLikeGlyph) => {
@@ -16,17 +17,18 @@ function myheartFunc(event){
     if (heart.textContent === EMPTY_HEART)
     {
       heart.textContent = FULL_HEART
-      heart.textContent.classList.add
+      heart.classList.add('activated-heart')
     }else{
       heart.textContent = EMPTY_HEART
+      heart.classList.remove('activated-heart')
     }
   })
-  .catch( (errorMessage) => {
+  .catch( (error) => {
     let divContainerErrorMsg = document.getElementById(modal)
-    //let msgDisplay = divContainerErrorMsg.removeAttribute("hidden")
     setTimeout(()=> {
+      divContainerErrorMsg.classList.remove(".hidden")
       let pTagMsg = document.querySelectorAll("p .modal-message")
-      pTagMsg.textContent = errorMessage
+      pTagMsg.textContent = error.message
     },3000)
     
   })
